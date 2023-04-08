@@ -32,7 +32,7 @@ function UserEngagements(){
         fetchPages(setUserEngagementData, userEngagementData);
       }}
       hasMore={true}
-      loader={<h4 className="text-center">Loading...</h4>}
+      loader={<h4 className="text-center">Checking...</h4>}
       endMessage={
         <p style={{ textAlign: "center" }}>
           <b>Yay! You have seen it all</b>
@@ -53,7 +53,7 @@ function UserEngagements(){
        {userEngagementData.map((item)=> {
                          return(
                           <>
-                          {userEngagementData? <EngagementCards item={item}/> : "checking..."}
+                          {userEngagementData? <EngagementCards item={item}/> : "loading..."}
                           </>
                         )
                     } 
