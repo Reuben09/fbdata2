@@ -13,12 +13,12 @@ function UserEngagements(){
     const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/engagements/${engagementId}?page=${page}&count=5`);
     const data = await response.json();
     setUserEngagementData([...userEngagementData, ...data.results]);
+      setIsLoading(false)
   };
 
   const refresh = setUserEngagementData => {};
   useEffect(() => {
     fetchPages(setUserEngagementData, userEngagementData);
-       setIsLoading(false)
   }, []);
 
           return (
