@@ -4,18 +4,18 @@ import HomeCards from "../components/HomeCards";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
-let page = 1;
+function Home() {
+  const [locationData, setLocationData] = useState([]);
+  const [page, setPage] = useState(1);
 
 const fetchData = async ( setLocationData, locationData) => {
   const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/base-search?page=${page}&count=100`);
   const data = await response.json();
   setLocationData([...locationData, ...data.results]);
+  setPage(page => page + 1);
 };
 
 const refresh = setItems => {};
-
-function Home() {
-  const [locationData, setLocationData] = useState([]);
  
   useEffect(() => {
     fetchData(setLocationData, locationData);
