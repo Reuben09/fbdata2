@@ -32,7 +32,7 @@ function UserEngagements(){
         fetchPages(setUserEngagementData, userEngagementData);
       }}
       hasMore={true}
-      loader={<h4 className="text-center">Checking...</h4>}
+      loader={ userEngagementData.length === 0?<h4 className="text-center">User has 0 engagements</h4>:<h4 className="text-center">Checking...</h4>}
       endMessage={
         <p style={{ textAlign: "center" }}>
           <b>Yay! You have seen it all</b>
