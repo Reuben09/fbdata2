@@ -10,7 +10,7 @@ function UserEngagements(){
     let { engagementId } = useParams();
 
   const fetchPages = async (setUserEngagementData, userEngagementData) => {
-    const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/engagements/${engagementId}?page=${page}&count=5`);
+    const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/engagements/${engagementId}?page=${page}&count=100`);
     const data = await response.json();
     setUserEngagementData([...userEngagementData, ...data.results]);
       setIsLoading(false)
