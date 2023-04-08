@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom';
 import EngagementCards from "../components/EngagementCards";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+let page = 1;
+
 function UserEngagements(){
     const [userEngagementData, setUserEngagementData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     let { engagementId } = useParams();
-    let page = 1;
 
   const fetchPages = async (setUserEngagementData, userEngagementData) => {
     const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/engagements/${engagementId}?page=${page}&count=5`);
