@@ -14,6 +14,7 @@ function UserEngagements(){
     const data = await response.json();
     setUserEngagementData([...userEngagementData, ...data.results]);
       setIsLoading(false)
+      page = page + 1;
   };
 
   const refresh = setUserEngagementData => {};
