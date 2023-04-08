@@ -3,11 +3,10 @@ import { useParams } from 'react-router-dom';
 import EngagementCards from "../components/EngagementCards";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-let page = 1;
-
 function UserEngagements(){
     const [userEngagementData, setUserEngagementData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [page, setPage] = useState(1);
     let { engagementId } = useParams();
 
   const fetchPages = async (setUserEngagementData, userEngagementData) => {
@@ -15,7 +14,7 @@ function UserEngagements(){
     const data = await response.json();
     setUserEngagementData([...userEngagementData, ...data.results]);
       setIsLoading(false)
-      page = page + 1;
+      setPage(page => page + 1);
       console.log(page);
   };
 
