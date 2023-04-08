@@ -8,12 +8,13 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 function LikedPages(){
   const [likedPages, setLikedPages] = useState([]);
   let { likeId } = useParams();
-  let page = 1;
+  const [page, setPage] = useState(1);
 
 const fetchPages = async (setLikedPages, likedPages) => {
   const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/likes/${likeId}?page=${page}&count=10`);
   const data = await response.json();
   setLikedPages([...likedPages, ...data.results]);
+  setPage(page => page + 1);
 };
 const refresh = setLikedPages => {};
 
