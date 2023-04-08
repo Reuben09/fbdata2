@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 function UserEngagements(){
     const [userEngagementData, setUserEngagementData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     let { engagementId } = useParams();
     let page = 1;
 
@@ -12,6 +13,7 @@ function UserEngagements(){
     const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/engagements/${engagementId}?page=${page}&count=5`);
     const data = await response.json();
     setUserEngagementData([...userEngagementData, ...data.results]);
+      setIsLoading(false)
   };
 
   const refresh = setUserEngagementData => {};
@@ -32,7 +34,7 @@ function UserEngagements(){
         fetchPages(setUserEngagementData, userEngagementData);
       }}
       hasMore={true}
-      loader={ userEngagementData.length === 0?<h4 className="text-center">User has 0 engagements</h4>:<h4 className="text-center">Checking...</h4>}
+      loader={ isLoading?<h4 className="text-center">Loading...</h4> : userEngagementData.length === 0 && <h4 className="text-center">User has 0 engagements</h4>}
       endMessage={
         <p style={{ textAlign: "center" }}>
           <b>Yay! You have seen it all</b>
