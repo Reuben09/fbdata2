@@ -11,7 +11,7 @@ function LikedPages(){
   const [page, setPage] = useState(1);
 
 const fetchPages = async (setLikedPages, likedPages) => {
-  const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/likes/${likeId}?page=${page}&count=10`);
+  const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/likes/${likeId}?page=${page}&count=100`);
   const data = await response.json();
   setLikedPages([...likedPages, ...data.results]);
   setPage(page => page + 1);
