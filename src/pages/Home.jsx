@@ -1,34 +1,53 @@
 import { useEffect, useState } from "react";
 import HomeCards from "../components/HomeCards";
-import Search from "../components/Search";
+// import Search from "../components/Search";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import axios from "axios";
 
-const Url ="http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/base-search?page=1&count=100";
+
+let page = 1;
+
+const fetchData = async ( setLocationData, locationData) => {
+  const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/base-search?page=${page}&count=100`);
+  const data = await response.json();
+  setLocationData([...locationData, ...data.results]);
+};
+
+const refresh = setItems => {};
 
 function Home() {
-  const [locationData, setLocationData] = useState();
-  const fetchData = async () => {
-    const response = await fetch(Url);
-    const data = await response.json();
-    setLocationData(data.results);
-    console.log(data.results);
-  };
+  const [locationData, setLocationData] = useState([]);
+ 
   useEffect(() => {
-    fetchData();
+    fetchData(setLocationData, locationData);
   }, []);
   return (
     <>
-    {locationData? 
-     <section class="services">
-     <div class="overrall-container">
-       <div class="services-text text-black mt-2">
-         <p>FB Data</p>
-       </div>
-       {/* <div className="mt-2">
-         <Search />
-       </div> */}
-           <div className="text-center grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
+    <section class="services flex flex-col justify-center items-center">
+     <div class="overrall-container flex justify-center w-full">
+         <InfiniteScroll
+      dataLength={locationData.length} //This is important field to render the next data
+      next={() => {
+        fetchData(setLocationData, locationData);
+      }}
+      hasMore={true}
+      loader={<h4 className="text-center">Loading...</h4>}
+      endMessage={
+        <p style={{ textAlign: "center" }}>
+          <b>Yay! You have seen it all</b>
+        </p>
+      }
+      // below props only if you need pull down functionality
+      refreshFunction={refresh}
+      pullDownToRefresh
+      pullDownToRefreshThreshold={50}
+      pullDownToRefreshContent={
+        <h3 style={{ textAlign: "center" }}># 8595; Pull down to refresh</h3>
+      }
+      releaseToRefreshContent={
+        <h3 style={{ textAlign: "center" }}># 8593; Release to refresh</h3>
+      }
+    >
+       <div className="text-center grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
            {locationData?.map((dataResult)=> {
                 return(
                  <>
@@ -38,11 +57,9 @@ function Home() {
            } 
            )}
          </div>
-     </div>
-   </section>
-    : <p className="text-center">
-      loading...
-      </p>}
+    </InfiniteScroll>
+    </div>
+    </section>
     </>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function HomeCards({ dataResult}) {
     const { location, name, profile_url, id, score } = dataResult;
   return (
-    <div className="column-container mt-4">
+    // <div className="column-container mt-4 bg-red">
       <div
         className="column shadow-md relative" 
       >
@@ -45,7 +45,7 @@ right-0 text-sm">
           <p>{score}</p>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 

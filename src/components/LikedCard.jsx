@@ -3,7 +3,6 @@
 function LikedCards({ likeResult }) {
     const { link, title} = likeResult;
   return (
-    <div className="column-container mt-4">
       <div
         className="column shadow-md"
       >
@@ -21,7 +20,6 @@ function LikedCards({ likeResult }) {
           </h1>
         </div>
       </div>
-    </div>
   );
 }
 

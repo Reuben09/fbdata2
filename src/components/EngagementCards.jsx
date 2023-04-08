@@ -2,7 +2,6 @@ function EngagementCards({item}){
   const { link, title, content} = item;
     return(
         <>
-        <div className="column-container mt-4">
       <div
         className="column shadow-md"
       >
@@ -23,7 +22,6 @@ function EngagementCards({item}){
           </h1>
         </div>
       </div>
-    </div>
         </>
     )
 
