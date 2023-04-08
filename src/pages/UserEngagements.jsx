@@ -50,14 +50,14 @@ function UserEngagements(){
       }
     >
        <div className="text-center grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
-       {userEngagementData.length === 0? <p>User has 0 engagements</p> : userEngagementData.map((item)=> {
+       {userEngagementData.map((item)=> {
                          return(
                           <>
                           {userEngagementData? <EngagementCards item={item}/> : "loading..."}
                           </>
                         )
                     } 
-                    )}}
+                    )}
          </div>
     </InfiniteScroll>
            </div>
