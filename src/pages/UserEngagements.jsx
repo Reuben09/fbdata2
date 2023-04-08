@@ -49,7 +49,6 @@ function UserEngagements(){
         <h3 style={{ textAlign: "center" }}># 8593; Release to refresh</h3>
       }
     >
-        {userEngagementData.length === 0 ? <p className='text-center'>user has 0 engagements</p> :
        <div className="text-center grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
        {userEngagementData?.map((item)=> {
                          return(
@@ -60,7 +59,6 @@ function UserEngagements(){
                     } 
                     )}
          </div>
-}
     </InfiniteScroll>
            </div>
        </section>
