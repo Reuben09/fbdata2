@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import EngagementCards from "../components/EngagementCards";
+import EngagementCards from "../components/cards/EngagementCards";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 function UserEngagements(){

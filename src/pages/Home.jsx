@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import HomeCards from "../components/HomeCards";
+import HomeCards from "../components/cards/HomeCards";
 // import Search from "../components/Search";
 import InfiniteScroll from 'react-infinite-scroll-component';
 

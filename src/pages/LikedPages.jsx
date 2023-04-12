@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import LikedCard from "../components/LikedCard";
+import LikedCard from "../components/cards/LikedCard";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
