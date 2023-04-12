@@ -7,6 +7,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 function LikedPages(){
   const [likedPages, setLikedPages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let { likeId } = useParams();
   const [page, setPage] = useState(1);
 
@@ -14,12 +15,14 @@ const fetchPages = async (setLikedPages, likedPages) => {
   const response = await fetch(`http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/likes/${likeId}?page=${page}&count=100`);
   const data = await response.json();
   setLikedPages([...likedPages, ...data.results]);
+  setIsLoading(false)
   setPage(page => page + 1);
 };
 const refresh = setLikedPages => {};
 
   useEffect(() => {
     fetchPages(setLikedPages, likedPages);
+    console.log(likedPages)
   }, []);
 
     return(
@@ -35,7 +38,7 @@ const refresh = setLikedPages => {};
         fetchPages(setLikedPages, likedPages);
       }}
       hasMore={true}
-      loader={<h4 className="text-center">Loading...</h4>}
+      loader={isLoading?<h4 className="text-center">Loading...</h4> : likedPages.length === 0 && <h4 className="text-center">User has 0 liked pages</h4>}
       endMessage={
         <p style={{ textAlign: "center" }}>
           <b>Yay! You have seen it all</b>

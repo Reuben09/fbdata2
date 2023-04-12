@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
@@ -11,6 +10,7 @@ import Location from "./pages/Location";
 import Tag from "./pages/Tag";
 import Keyword from "./pages/Keyword";
 import AllServer from "./pages/AllServer";
+import Servers from "./pages/Servers";
 import ActiveServer from "./pages/ActiveServer";
 import UnActiveServer from "./pages/UnActiveServer";
 
@@ -25,9 +25,13 @@ function App() {
            <Route path="keyword" element={<Keyword />} />
            <Route path="location" element={<Location />} />
            <Route path="tag" element={<Tag/>} />
-           <Route path="activeserver" element={<ActiveServer />} />
-           <Route path="allserver" element={<AllServer />} />
-           <Route path="unactiveserver" element={<UnActiveServer />} />
+          </Route>
+
+          <Route path="servers" element={<Servers />}>
+           <Route index  element={<AllServer />} />
+            <Route path="all" element={<AllServer />} />
+           <Route path="active" element={<ActiveServer />} />
+           <Route path="idle" element={<UnActiveServer />} />
           </Route>
           <Route path="/likes/:likeId" element={<LikedPages />} />
           <Route path="/engagements/:engagementId" element={<UserEngagements />} />
