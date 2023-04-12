@@ -13,22 +13,22 @@ function AllServerCard({ serverResult }){
             <span class="line"></span>
           </div>
           <div className="services-text text-black">
-          <p>Type: {type === null? "null": type}</p>
+          <p>Type: {type === null? "-": type}</p>
           </div>
           <div className="services-text text-black">
-            <p>Value: {value === null? "null": value}</p>
+            <p>Value: {value === null? "-": value}</p>
           </div>
           <div className="services-text text-black">
-          <p>Running: {running === true? "true": "false"}</p>
+          <p>Running: {running === true? "Yes": "No"}</p>
           </div>
           <div className="services-text text-black">
-            <p>Started: {started_at === null? "null": started_at}</p>
+            <p>Started: {started_at === null? "-": started_at}</p>
           </div>
           <div className="services-text text-black">
-            <p>Finshed: {finished_at === null? "null": finished_at}</p>
+            <p>Finshed: {finished_at === null? "-": finished_at}</p>
           </div>
-          <div className="services-text text-black">
-            <p>Status: {status === null? "null": status}</p>
+          <div className="services-text text-black mt-4">
+            <p>{status === null? "": status}</p>
           </div>
         </div>
           </>
