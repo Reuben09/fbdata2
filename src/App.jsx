@@ -13,6 +13,7 @@ import AllServer from "./pages/AllServer";
 import Servers from "./pages/Servers";
 import ActiveServer from "./pages/ActiveServer";
 import IdleServer from "./pages/IdleServer";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           </Route>
           <Route path="/likes/:likeId" element={<LikedPages />} />
           <Route path="/engagements/:engagementId" element={<UserEngagements />} />
+          <Route path='*' element={<NotFound />}/>
         </Routes>
       <Footer />
     </div>
