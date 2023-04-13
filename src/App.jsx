@@ -12,7 +12,7 @@ import Keyword from "./pages/Keyword";
 import AllServer from "./pages/AllServer";
 import Servers from "./pages/Servers";
 import ActiveServer from "./pages/ActiveServer";
-import UnActiveServer from "./pages/UnActiveServer";
+import IdleServer from "./pages/IdleServer";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
            <Route index  element={<AllServer />} />
             <Route path="all" element={<AllServer />} />
            <Route path="active" element={<ActiveServer />} />
-           <Route path="idle" element={<UnActiveServer />} />
+           <Route path="idle" element={<IdleServer />} />
           </Route>
           <Route path="/likes/:likeId" element={<LikedPages />} />
           <Route path="/engagements/:engagementId" element={<UserEngagements />} />

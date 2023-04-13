@@ -1,6 +1,6 @@
 
-function AllServerCard({ serverResult }){
-    const { ip, type, value, running, started_at, finished_at, status} = serverResult;
+function ActiveServerCard({ activeServerResult }){
+    const { ip, type, value, running, started_at, finished_at, status} = activeServerResult;
     return(
         <>
         <div
@@ -35,4 +35,4 @@ function AllServerCard({ serverResult }){
     )
 }
 
-export default AllServerCard;
+export default ActiveServerCard;

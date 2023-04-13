@@ -1,34 +1,34 @@
 import { useEffect, useState } from 'react'
-import AllServerCard from "../components/cards/AllServerCard";
+import IdleServerCard from "../components/cards/IdleServerCard";
 
 
-const Url = `http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/servers?filter=ALL`
+const Url = `http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/servers?filter=IDLE`
 
-function AllServer(){
-    const [allServer, setAllServer] = useState();
+function IdleServer(){
+    const [idleServer, setIdleServer] = useState();
     
-const fetchAllServer = async () => {
+const fetchIdleServer = async () => {
     const response = await fetch(Url);
     const data = await response.json();
-    setAllServer(data.servers);
+    setIdleServer(data.servers);
     console.log(data)
   };
 
   useEffect(() => {
-    fetchAllServer();
+    fetchIdleServer();
   }, []);
 
 
-     if(allServer){
+     if(idleServer){
       return (
         <>
         <section class="services flex flex-col justify-center items-center">
         <div class="overrall-container flex justify-center w-full">
           <div className="text-center grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
-              {allServer?.map((serverResult)=> {
+              {idleServer?.map((idleServerResult)=> {
                    return(
                     <>
-                    {serverResult? <AllServerCard serverResult={serverResult}/> : "loading..."}
+                    {idleServerResult? <IdleServerCard idleServerResult={idleServerResult}/> : "loading..."}
                     </>
                   )
               } 
@@ -46,4 +46,4 @@ const fetchAllServer = async () => {
 }
 
 
-export default AllServer;
+export default IdleServer;
