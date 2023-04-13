@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import HomeCards from "../components/cards/HomeCards";
-// import Search from "../components/Search";
+import Search from "../components/Search";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
@@ -23,6 +23,9 @@ const refresh = setItems => {};
   return (
     <>
     <section class="services flex flex-col justify-center items-center">
+      <div className="flex justify-center flex-col w-full mb-8">
+      <Search />
+      </div>
      <div class="overrall-container flex justify-center w-full">
          <InfiniteScroll
       dataLength={locationData.length} //This is important field to render the next data

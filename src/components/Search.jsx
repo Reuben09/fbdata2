@@ -1,16 +1,13 @@
-// import SearchIcon from "@mui/icons-material";
 
 function Search() {
   return (
-    <div className="overall-input-container">
-      <div className="input-container">
-        <div className="inner-input-container">
-          {/* <SearchIcon className="search-icon" /> */}
-          <input type="text" placeholder="search location" />
-        </div>
-
-        <button>search</button>
-      </div>
+    <div className="text-center">
+      <select id="cars" className="w-1/4 text-center cursor-pointer">
+  <option value="volvo">All</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+      </select>
     </div>
   );
 }
