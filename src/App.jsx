@@ -9,10 +9,10 @@ import Navbar from "./components/Navbar";
 import Location from "./pages/dashboard/Location";
 import Keyword from "./pages/dashboard/Keyword";
 import Tag from "./pages/dashboard/Tag";
-import AllServer from "./pages/AllServer";
-import Servers from "./pages/Servers";
-import ActiveServer from "./pages/ActiveServer";
-import IdleServer from "./pages/IdleServer";
+import AllServer from "./pages/server/AllServer";
+import Servers from "./pages/server/Servers";
+import ActiveServer from "./pages/server/ActiveServer";
+import IdleServer from "./pages/server/IdleServer";
 import NotFound from "./pages/NotFound";
 
 function App() {

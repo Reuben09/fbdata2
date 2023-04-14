@@ -1,34 +1,34 @@
 import { useEffect, useState } from 'react'
-import ActiveServerCard from "../components/cards/ActiveServerCard";
+import IdleServerCard from "../../components/cards/IdleServerCard";
+import { fetchIdleServer } from "../../services/pages"
 
+const Url = `http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/servers?filter=IDLE`
 
-const Url = `http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/servers?filter=ACTIVE`
-
-function ActiveServer(){
-    const [activeServer, setActiveServer] = useState();
+function IdleServer(){
+    const [idleServer, setIdleServer] = useState();
     
-const fetchActiveServer = async () => {
+const fetchIdleServer = async () => {
     const response = await fetch(Url);
     const data = await response.json();
-    setActiveServer(data.servers);
+    setIdleServer(data.servers);
     console.log(data)
   };
 
   useEffect(() => {
-    fetchActiveServer();
+    fetchIdleServer(setIdleServer);
   }, []);
 
 
-     if(activeServer){
+     if(idleServer){
       return (
         <>
         <section class="services flex flex-col justify-center items-center">
         <div class="overrall-container flex justify-center w-full">
           <div className="text-center grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
-              {activeServer?.map((activeServerResult)=> {
+              {idleServer?.map((idleServerResult)=> {
                    return(
                     <>
-                    {activeServerResult? <ActiveServerCard activeServerResult={activeServerResult}/> : "loading..."}
+                    {idleServerResult? <IdleServerCard idleServerResult={idleServerResult}/> : "loading..."}
                     </>
                   )
               } 
@@ -46,4 +46,4 @@ const fetchActiveServer = async () => {
 }
 
 
-export default ActiveServer;
+export default IdleServer;

@@ -1,34 +1,26 @@
 import { useEffect, useState } from 'react'
-import IdleServerCard from "../components/cards/IdleServerCard";
+import AllServerCard from "../../components/cards/AllServerCard";
+import { fetchAllServer } from "../../services/pages"
 
-
-const Url = `http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/servers?filter=IDLE`
-
-function IdleServer(){
-    const [idleServer, setIdleServer] = useState();
+function AllServer(){
+    const [allServer, setAllServer] = useState();
     
-const fetchIdleServer = async () => {
-    const response = await fetch(Url);
-    const data = await response.json();
-    setIdleServer(data.servers);
-    console.log(data)
-  };
 
   useEffect(() => {
-    fetchIdleServer();
+    fetchAllServer(setAllServer); 
   }, []);
 
 
-     if(idleServer){
+     if(allServer){
       return (
         <>
         <section class="services flex flex-col justify-center items-center">
         <div class="overrall-container flex justify-center w-full">
           <div className="text-center grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
-              {idleServer?.map((idleServerResult)=> {
+              {allServer?.map((serverResult)=> {
                    return(
                     <>
-                    {idleServerResult? <IdleServerCard idleServerResult={idleServerResult}/> : "loading..."}
+                    {serverResult? <AllServerCard serverResult={serverResult}/> : "loading..."}
                     </>
                   )
               } 
@@ -46,4 +38,4 @@ const fetchIdleServer = async () => {
 }
 
 
-export default IdleServer;
+export default AllServer;

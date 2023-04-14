@@ -1,34 +1,28 @@
 import { useEffect, useState } from 'react'
-import AllServerCard from "../components/cards/AllServerCard";
+import ActiveServerCard from "../../components/cards/ActiveServerCard";
+import { fetchActiveServer } from "../../services/pages"
 
+const Url = `http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/servers?filter=ACTIVE`
 
-const Url = `http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com/servers?filter=ALL`
-
-function AllServer(){
-    const [allServer, setAllServer] = useState();
+function ActiveServer(){
+    const [activeServer, setActiveServer] = useState();
     
-const fetchAllServer = async () => {
-    const response = await fetch(Url);
-    const data = await response.json();
-    setAllServer(data.servers);
-    console.log(data)
-  };
 
   useEffect(() => {
-    fetchAllServer();
+    fetchActiveServer(setActiveServer);
   }, []);
 
 
-     if(allServer){
+     if(activeServer){
       return (
         <>
         <section class="services flex flex-col justify-center items-center">
         <div class="overrall-container flex justify-center w-full">
           <div className="text-center grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
-              {allServer?.map((serverResult)=> {
+              {activeServer?.map((activeServerResult)=> {
                    return(
                     <>
-                    {serverResult? <AllServerCard serverResult={serverResult}/> : "loading..."}
+                    {activeServerResult? <ActiveServerCard activeServerResult={activeServerResult}/> : "loading..."}
                     </>
                   )
               } 
@@ -46,4 +40,4 @@ const fetchAllServer = async () => {
 }
 
 
-export default AllServer;
+export default ActiveServer;

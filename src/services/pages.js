@@ -41,3 +41,30 @@ export const fetchProfile = async ( setLocationData, locationData, setPage, page
       throw err;
     }
   };
+
+  export const fetchAllServer = async (setAllServers) => {
+    try {
+      const res = await request.get('servers?filter=ALL');
+      setAllServers(res.data.servers);
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  export const IdleServer = async (setIdleServer) => {
+    try {
+      const res = await request.get('servers?filter=IDLE');
+      setIdleServer(res.data.servers);
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  export const ActiveServer = async (setActiveServer) => {
+    try {
+      const res = await request.get('servers?filter=ACTIVE');
+      setActiveServer(res.data.servers);
+    } catch (err) {
+      throw err;
+    }
+  };
