@@ -51,7 +51,7 @@ export const fetchProfile = async ( setLocationData, locationData, setPage, page
     }
   };
 
-  export const IdleServer = async (setIdleServer) => {
+  export const fetchIdleServer = async (setIdleServer) => {
     try {
       const res = await request.get('servers?filter=IDLE');
       setIdleServer(res.data.servers);
@@ -60,7 +60,7 @@ export const fetchProfile = async ( setLocationData, locationData, setPage, page
     }
   };
 
-  export const ActiveServer = async (setActiveServer) => {
+  export const fetchActiveServer = async (setActiveServer) => {
     try {
       const res = await request.get('servers?filter=ACTIVE');
       setActiveServer(res.data.servers);
