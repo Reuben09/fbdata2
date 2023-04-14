@@ -1,11 +1,11 @@
 import { request } from "../utils/axios";
 
-export const fetchProfile = async ( setLocationData, locationData, setPage, page) => {
+export const fetchProfile = async ( setLocationData, locationData, setPage, page, setIsLoading) => {
     try {
       const res = await request.get(`base-search?page=${page}&count=100`);
        setLocationData([...locationData, ...res.data.results]);
        setPage(page => page + 1);
-
+       setIsLoading(false);
     } catch (err) {
       throw err;
     }
@@ -69,10 +69,10 @@ export const fetchProfile = async ( setLocationData, locationData, setPage, page
     }
   };
 
-  export const fetchProfileById = async (setLocationIdData, locationIdData, locationId) => {
+  export const fetchProfileById = async (setLocationIdData, locationId) => {
     try {
       const res = await request.get(`search?location=${locationId}&page=1&count=100`);
-      setLocationIdData([...locationIdData, ...res.data.results]);
+      setLocationIdData(res.data.results);
       console.log(res.data.results)
     } catch (err) {
       throw err;

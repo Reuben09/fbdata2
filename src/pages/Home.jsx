@@ -10,6 +10,7 @@ function Home() {
   const [locationId, setLocationId] = useState("");
   const [locationIdData, setLocationIdData] = useState([]);
   const [locationList, setLocationList] = useState();
+  const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1);
 
    const refresh = setItems => {};
@@ -22,13 +23,16 @@ function Home() {
   }
 
   useEffect(() => {
-    fetchProfile(setLocationData, locationData, setPage, page);
+    fetchProfile(setLocationData, locationData, setPage, page, setIsLoading);
     fetchLocation(setLocationList)
   }, []);
 
   useEffect(()=> {
+    setIsLoading(true)
     if(locationId){
-      fetchProfileById(setLocationIdData, locationIdData, locationId);
+      setLocationIdData([]);
+      fetchProfileById(setLocationIdData, locationId);
+      setIsLoading(false)
     }
   },[locationId]);
 
@@ -44,10 +48,10 @@ function Home() {
          <InfiniteScroll
       dataLength={locationData.length} //This is important field to render the next data
       next={() => {
-        fetchProfile(setLocationData, locationData, setPage, page);
+        fetchProfile(setLocationData, locationData, setPage, page, setIsLoading);
       }}
       hasMore={true}
-      loader={<h4 className="text-center">Loading...</h4>}
+      loader={isLoading && <h4 className="text-center">Loading...</h4>}
       endMessage={
         <p style={{ textAlign: "center" }}>
           <b>Yay! You have seen it all</b>
