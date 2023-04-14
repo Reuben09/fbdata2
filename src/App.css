@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Poppins&family=Roboto&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgb(214, 213, 213);
+  font-family: "Poppins", sans-serif;
+  max-width: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* .....servive section... */
+.services {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  justify-self: left;
+  text-align: left;
+  padding: 4rem 4rem;
+}
+.services-text {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
+}
+.services-text p {
+  font-size: 1.1rem;
+  color: rgb(49, 53, 77);
+  font-family: "Poppins", sans-serif;
+}
+.skill-set-text-h2 {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
+  color: rgb(49, 53, 77);
+}
+.skill-set-text p {
+  line-height: 1.5rem;
+}
+.skill-set-text-h2 h1 {
+  color: rgb(249, 72, 84);
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+  font-family: "DM Sans", sans-serif;
+}
+span.line {
+  border: 3px solid rgb(249, 72, 84);
+  border-radius: 5px;
+  display: block;
+  width: 6rem;
+  margin-bottom: 2rem;
+}
+.icon-container i {
+  font-size: 2rem;
+  color: rgb(249, 72, 84);
+}
+.column {
+  flex-grow: 1;
+  background: white;
+  padding: 4rem 1rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(49, 53, 77);
+}
+.icon-container {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.skill-set-header {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.skill-set-header > h1 {
+  font-size: 1rem;
+  color: rgb(49, 53, 77);
+  font-family: "Poppins", sans-serif;
+}
+.skill-set-text {
+  text-align: left;
+}
+.skill-set-text > p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+}
+/* .....servive section... */
+
+/* ....media query ..... */
+@media (max-width: 999px) {
+  .services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 4rem;
+    padding-left: 4rem;
+    justify-self: left;
+    text-align: left;
+  }
+}
+
+@media (max-width: 350px) {
+  .column {
+    width: 100%;
+  }
+}
+/* ....media query ..... */
+
+/* search */
+.input-container {
+  display: grid;
+  margin-bottom: 2rem;
+  grid-template-columns: 2fr 1fr;
+}
+
+.inner-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.overall-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 2rem;
+  transition: all 0.8s ease;
+}
+.inner-input-container {
+  border: 1px solid rgb(111, 110, 110);
+  margin-right: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.inner-input-container input {
+  background: transparent;
+  border: none;
+  width: 80%;
+  padding: 1rem 0.5rem;
+  color: rgb(49, 53, 77);
+  font-size: 1rem;
+  font-family: "Nunito", sans-serif;
+  outline: none;
+}
+.input-container > button {
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+  background-color: rgb(249, 72, 84);
+  color: #fafafa;
+  font-size: 1rem;
+  border: 1px solid rgb(249, 72, 84);
+  margin-left: 0.5rem;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+@media (max-width: 405px) {
+  .input-container {
+    grid-template-columns: 1fr;
+  }
+  .input-container > button {
+    background: transparent;
+    border: none;
+    width: 100%;
+    padding: 1rem 0rem;
+    font-family: "Nunito", sans-serif;
+    cursor: pointer;
+    background-color: rgb(249, 72, 84);
+    color: #fafafa;
+    font-size: 1rem;
+    border: 1px solid rgb(249, 72, 84);
+    margin-top: 1rem;
+    margin-left: 0rem;
+  }
+  .services {
+    padding: 2rem 1rem;
+  }
+}

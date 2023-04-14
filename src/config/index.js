@@ -1,0 +1,1 @@
+export const BASE_URL = 'http://facebookscraper-env.eba-cjxrmque.us-east-1.elasticbeanstalk.com';
