@@ -2,25 +2,42 @@ import { useEffect, useState } from "react";
 import HomeCards from "../components/cards/HomeCards";
 import Search from "../components/Search";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { fetchProfile, fetchLocation } from "../services/pages"
+import { fetchProfile, fetchLocation, fetchProfileById } from "../services/pages"
 
 function Home() {
   const [locationData, setLocationData] = useState([]);
+  const [ selectedLocation, setSelectedLocation] = useState("All")
+  const [locationId, setLocationId] = useState("");
+  const [locationIdData, setLocationIdData] = useState([]);
   const [locationList, setLocationList] = useState();
   const [page, setPage] = useState(1);
 
    const refresh = setItems => {};
  
+   const onLocationChange = (event)=> {
+    let id = event.target.value;
+    setLocationId(id);
+    console.log(locationId)
+    setSelectedLocation(event.target.value)
+  }
+
   useEffect(() => {
     fetchProfile(setLocationData, locationData, setPage, page);
     fetchLocation(setLocationList)
   }, []);
+
+  useEffect(()=> {
+    if(locationId){
+      fetchProfileById(setLocationIdData, locationIdData, locationId);
+    }
+  },[locationId]);
+
   return (
     <>
     <section class="services flex flex-col justify-center items-center">
       <div className="flex justify-center flex-col w-full mb-8">
         {
-          locationList && <Search locationList = {locationList}/>
+          locationList && <Search locationList = {locationList} selectedLocation={selectedLocation} onLocationChange={onLocationChange}/>
         }
       </div>
      <div class="overrall-container flex justify-center w-full">
@@ -48,14 +65,21 @@ function Home() {
       }
     >
        <div className="text-center grid gap-4  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 align-center justify-center">
-           {locationData?.map((dataResult)=> {
+           {locationIdData.length > 0 ? locationIdData?.map((dataResult)=> {
                 return(
                  <>
                  {dataResult? <HomeCards dataResult={dataResult}/> : "loading..."}
                  </>
                )
-           } 
-           )}
+           }): 
+           locationData?.map((dataResult)=> {
+            return(
+             <>
+             {dataResult? <HomeCards dataResult={dataResult}/> : "loading..."}
+             </>
+           )
+       })
+           }
          </div>
     </InfiniteScroll>
     </div>
