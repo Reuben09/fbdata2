@@ -69,11 +69,12 @@ export const fetchProfile = async ( setLocationData, locationData, setPage, page
     }
   };
 
-  export const fetchProfileById = async (setLocationIdData, locationId) => {
+  export const fetchProfileById = async (setLocationIdData, locationId, callback) => {
     try {
       const res = await request.get(`search?location=${locationId}&page=1&count=100`);
       setLocationIdData(res.data.results);
       console.log(res.data.results)
+      callback();
     } catch (err) {
       throw err;
     }
