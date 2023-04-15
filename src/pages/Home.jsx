@@ -31,8 +31,9 @@ function Home() {
     setIsLoading(true)
     if(locationId){
       setLocationIdData([]);
-      fetchProfileById(setLocationIdData, locationId);
-      setIsLoading(false)
+      fetchProfileById(setLocationIdData, locationId, () => {
+            setIsLoading(false);
+        })
     }
   },[locationId]);
 
