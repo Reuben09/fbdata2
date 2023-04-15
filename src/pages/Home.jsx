@@ -32,7 +32,7 @@ function Home() {
     if(locationId){
       setLocationIdData([]);
       fetchProfileById(setLocationIdData, locationId, () => {
-            setIsLoading(false);
+            setIsLoading(true);
         })
     }
   },[locationId]);
